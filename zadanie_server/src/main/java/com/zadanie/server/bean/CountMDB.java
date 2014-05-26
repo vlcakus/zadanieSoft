@@ -9,6 +9,8 @@ import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 import com.zadanie.server.entity.ConnectionsCount;
@@ -27,16 +29,33 @@ public class CountMDB implements MessageListener {
 	@Inject
     UserTransaction utx;
 	
+	
+	
+	/*
+	 * (non-Javadoc)
+	 * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
+	 * Messge listener, pre dany pripad odchytavanie velkej exception staci,
+	 * 
+	 */
 	@Override
 	public void onMessage(Message m) {
 		ObjectMessage om = (ObjectMessage) m;		
 		try {
-			ConnectionsCount cc = (ConnectionsCount) om.getObject();
-			em.persist(cc);			
-		} catch (JMSException e) {
+			ConnectionsCount cc = (ConnectionsCount) om.getObject();			
+			utx.begin();					
+			em.persist(cc);		
+			utx.commit();
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 		
+		finally{
+			try {
+				utx.rollback();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			} 
+		}
 		
 	}
 
