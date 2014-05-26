@@ -59,8 +59,7 @@ public class RequestTest {
 		String input = "{\"ip\":\"100.26.34.11\",\"count\":250}";
 		request.body("application/json", input);
 		ClientResponse<String> response = request.post(String.class);
-		int status = response.getStatus();
-		System.out.println(status);
+		int status = response.getStatus();		
 		assertEquals(204, status);
 
 	}
