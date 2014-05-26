@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<project>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zadanie.server</groupId>
+	<artifactId>zadanie_server</artifactId>
+	<name>Zadana uloha</name>
+	<version>1.0.0.0-SNAPSHOT</version>
+
+
+	<properties>
+		<version.junit>4.8.2</version.junit>
+		<version.org.jboss.arquillian>1.0.0.Alpha5
+		</version.org.jboss.arquillian>
+		<version.org.apache.openejb_openejb.core>3.1.2
+		</version.org.apache.openejb_openejb.core>
+		<version.org.jboss.ejb3>3.1.4</version.org.jboss.ejb3>
+		<version.javax.enterprise.cdi>1.0-SP4</version.javax.enterprise.cdi>
+	</properties>
+
+
+
+	<repositories>
+		<repository>
+			<id>jboss-public-repository</id>
+			<name>JBoss Repository</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.4.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-6.0</artifactId>
+				<version>3.0.1.Final</version>
+				<type>pom</type>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+
+	</dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-arquillian-container-remote</artifactId>
+			<version>7.1.1.Final</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+			<version>1.1.4.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>3.0.8.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+			<version>1.0.2.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>jms</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+
+
+	</dependencies>
+
+</project>

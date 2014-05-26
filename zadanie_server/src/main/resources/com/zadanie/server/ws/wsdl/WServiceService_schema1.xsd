@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://client.ws.server.zadanie.com/" xmlns:tns="http://client.ws.server.zadanie.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="addCount" type="tns:addCount"/>
+
+  <xs:element name="addCountResponse" type="tns:addCountResponse"/>
+
+  <xs:complexType name="addCount">
+    <xs:sequence>
+      <xs:element name="count" type="xs:int" minOccurs="0"/>
+      <xs:element name="ip" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addCountResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

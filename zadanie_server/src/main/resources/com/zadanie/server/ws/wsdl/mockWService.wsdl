@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WServiceService" targetNamespace="http://client.ws.server.zadanie.com/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://client.ws.server.zadanie.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://client.ws.server.zadanie.com/" schemaLocation="/mockWService?WSDL&amp;interface=WServicePortBinding&amp;part=WServiceService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="addCount">
+    <part name="parameters" element="tns:addCount">
+    </part>
+  </message>
+  <message name="addCountResponse">
+    <part name="parameters" element="tns:addCountResponse">
+    </part>
+  </message>
+  <portType name="WService">
+    <operation name="addCount">
+      <input message="tns:addCount">
+    </input>
+      <output message="tns:addCountResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="WServicePortBinding" type="tns:WService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="addCount">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="WServiceService">
+    <port name="WServicePort" binding="tns:WServicePortBinding">
+      <soap:address location="http://ness:8088/mockWService"/>
+    </port>
+  </service>
+</definitions>
